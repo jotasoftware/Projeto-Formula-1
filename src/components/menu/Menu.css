@@ -1,0 +1,47 @@
+.menuDiv{
+    padding-top: 30px;
+    flex: 1;
+    background-color: #0f0f0f;
+    border-right: .1px #858585 solid;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 25%;
+    width: 100%;
+}
+
+.image img{
+    width: 150px;
+}
+
+.menuItens{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+}
+
+.menuLink{
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menuLink a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    color: white;
+    text-decoration: none;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.menuLink a:hover{
+    background-color: #ff2e2e;
+}
