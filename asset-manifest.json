@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Projeto-Formula-1/static/css/main.123f2f95.css",
+    "main.js": "/Projeto-Formula-1/static/js/main.02a1a4a2.js",
+    "static/js/453.aabb2cd1.chunk.js": "/Projeto-Formula-1/static/js/453.aabb2cd1.chunk.js",
+    "index.html": "/Projeto-Formula-1/index.html",
+    "main.123f2f95.css.map": "/Projeto-Formula-1/static/css/main.123f2f95.css.map",
+    "main.02a1a4a2.js.map": "/Projeto-Formula-1/static/js/main.02a1a4a2.js.map",
+    "453.aabb2cd1.chunk.js.map": "/Projeto-Formula-1/static/js/453.aabb2cd1.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.123f2f95.css",
+    "static/js/main.02a1a4a2.js"
+  ]
+}
