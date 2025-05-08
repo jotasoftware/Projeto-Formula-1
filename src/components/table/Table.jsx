@@ -1,17 +1,28 @@
 import React, { useContext } from 'react';
 import { DriverContext } from "../../context/DriverContext";
+import { TeamContext } from '../../context/TeamContext';
+import Loading from '../loading/Loading';
 import "./Table.css";
 
 const columns = {
     drivers: ["Nº", "Piloto", "Equipe", "Pontos"],
-    teams: ["Nome", "Piloto 1", "Piloto 2", "Pontos"]
+    teams: ["Nome", "Nacionalidade", "Vitórias", "Pontos"]
 }
   
 
 const Table = ({type}) => {
-    const { driversData, setSelectDriver } = useContext(DriverContext);
+    const driversContext = useContext(DriverContext);
+    const teamsContext = useContext(TeamContext);
 
-    if(!driversData) return <p>carregando</p>
+    const driversData = type === "drivers" ? driversContext?.driversData : null;
+    const setSelectDriver = type === "drivers" ? driversContext?.setSelectDriver : null;
+    const teamsData = type === "teams" ? teamsContext?.teamsData : null;
+
+    if((type === "drivers" && !driversData)||(type === "teams" && !teamsData)) return <Loading />
+
+
+    
+    
 
     const handleClick = (driver)=>{
         if(driver.Driver.familyName === 'Verstappen') {
@@ -26,15 +37,15 @@ const Table = ({type}) => {
                 <thead>
                     <tr>
                         <th>Pos</th>
-                        <th>{columns[type][0]}</th>
-                        <th>{columns[type][1]}</th>
-                        <th>{columns[type][2]}</th>
-                        <th>{columns[type][3]}</th>
+                        {columns[type].map((th, index)=>(
+                           <th key={index}>{columns[type][index]}</th> 
+                        ))}
                     </tr>
                 </thead>
+                {type === 'drivers' ? 
                 <tbody>
                     {(driversData.DriverStandings).map((driver, index)=>(
-                        <tr key={index} onClick={() => handleClick(driver)}>
+                        <tr key={index} onClick={() => handleClick(driver)} className="hover">
                             <td>{index+1}</td>
                             <td>{driver.Driver.permanentNumber}</td>
                             <td>{driver.Driver.familyName}</td>
@@ -42,7 +53,19 @@ const Table = ({type}) => {
                             <td>{driver.points}</td>
                         </tr>
                     ))}
-                </tbody>
+                </tbody> 
+                : 
+                <tbody>
+                    {teamsData.map((team, index)=>(
+                        <tr key={index} className="noHover">
+                            <td>{index+1}</td>
+                            <td>{team.Constructor.name}</td>
+                            <td>{team.Constructor.nationality}</td>
+                            <td>{team.wins}</td>
+                            <td>{team.points}</td>
+                        </tr>
+                    ))}
+                </tbody> }
             </table>
         </div>
     );

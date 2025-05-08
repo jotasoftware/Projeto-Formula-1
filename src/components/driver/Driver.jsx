@@ -1,13 +1,16 @@
 import { useContext } from "react";
 import { DriverContext } from "../../context/DriverContext";
 import './Driver.css';
+import { AiOutlineClose } from "react-icons/ai";
+import { SeasonContext } from "../../context/SeasonContext";
+import Loading from "../loading/Loading";
 
 const Driver = () =>{
-    const { driverData } = useContext(DriverContext);
+    const { driverData, setSelectDriver } = useContext(DriverContext);
+    const { yearSeason } = useContext(SeasonContext);
 
     if(!driverData) {
-        //TODO fazer loading dos Driveros
-        return <p>carregando dados</p>
+        return <Loading />
     }
 
     const driverInfo = driverData.Driver
@@ -22,8 +25,30 @@ const Driver = () =>{
         return age;
     }
 
+    const handleClick = ()=>{
+        setSelectDriver("")
+    }
+
     return (
-        <h2 className="white">{driverInfo.givenName + driverInfo.familyName + driverInfo.permanentNumber + driverInfo.url + getAge() + driverData.position + driverData.points + teamInfo.name + teamInfo.url}</h2>
+        <div className="driverCard">
+            <div className="driverDiv">
+                <span className="number">{driverInfo.permanentNumber}</span>
+                <div className="nomeDriver">
+                    <h2>{driverInfo.givenName +" "+ driverInfo.familyName}</h2>
+                    <div className="closeDriver">
+                        <AiOutlineClose onClick={handleClick} size={24} />
+                    </div>
+                </div>
+                <div className="infoDriver">
+                    <p>{driverInfo.nationality}</p>
+                    <p>{driverInfo.dateOfBirth}</p>
+                    <p>{getAge()} anos</p>
+                    <p>{driverData.wins} vitórias em {yearSeason}</p>
+                    <p>{teamInfo.name}</p>
+                    <a href={driverInfo.url}target="_blank" rel="noreferrer">Mais Informações</a>
+                </div>
+            </div>
+        </div>
     )
 }
 

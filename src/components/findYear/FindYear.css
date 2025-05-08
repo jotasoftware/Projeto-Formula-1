@@ -1,0 +1,42 @@
+.findYearDiv{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputDiv{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.findYearDiv input{
+    background-color: transparent;
+    border: solid 1px #434343;
+    width: 30px;
+    border-radius: 5px;
+    padding: 5px;
+    transition: box-shadow 0.2s ease-in-out;
+    color: white;
+}
+
+.findYearDiv input:focus{
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(255, 80, 80, 0.3);
+    border: none;
+}
+
+.sendArrow{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px;
+    border-radius: 50%;
+    transition: background .3s linear;
+}
+
+.active{
+    background-color: #e10600;
+}

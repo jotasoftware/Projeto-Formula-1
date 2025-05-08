@@ -1,9 +1,7 @@
-.screen{
-  display: flex;
-  flex-direction: row;
-  height: 100vh;
-}
-
 .info{
-  flex: 4;
+  margin-left: 20vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
