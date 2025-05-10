@@ -1,0 +1,35 @@
+.cardRace{
+    color: white;
+    background-color: #0f0f0f;
+    border: .1px #858585 solid;
+    border-radius: 10px;
+    width: 200px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 20px;
+    gap: 15px;
+    position: relative;
+}
+
+.cardRace h2{
+    color: white;
+    margin: 0;
+    font-size: 22px;
+    height: 65px;
+}
+
+.cardRace p{
+    color: white;
+    margin: 0;
+    height: 30px;
+}
+
+
+.cardRace a{
+    color: 	#e10600;
+    text-decoration: none;
+    cursor: pointer;
+    height: 40px;
+}

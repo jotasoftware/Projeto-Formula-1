@@ -40,10 +40,17 @@ const DriverProvider = ({children}) =>{
                     throw new Error(`Erro API F1: ${response.status} ${response.statusText}`);
                 }
                 const data = await response.json();
-                dispatch({
-                    type: 'set_driver_data',
-                    payload: data.MRData.StandingsTable.StandingsLists[0].DriverStandings[0]
-                })
+                if((data.MRData.StandingsTable.StandingsLists).length === 0){
+                    dispatch({
+                        type: 'set_driver_data',
+                        payload: ""
+                    })
+                }else{
+                    dispatch({
+                        type: 'set_driver_data',
+                        payload: data.MRData.StandingsTable.StandingsLists[0].DriverStandings[0]
+                    })
+                }
             }catch (error){
                 console.error('Error to find data of the driver', error);
             }

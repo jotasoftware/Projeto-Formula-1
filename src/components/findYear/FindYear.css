@@ -4,12 +4,15 @@
     gap: 10px;
     justify-content: center;
     align-items: center;
+    text-align: center;
+    padding-bottom: 30px;
 }
 
 .inputDiv{
     display: flex;
     align-items: center;
     gap: 15px;
+    text-align: center;
 }
 
 .findYearDiv input{
@@ -24,7 +27,7 @@
 
 .findYearDiv input:focus{
     outline: none;
-    box-shadow: 0 0 0 2px rgba(255, 80, 80, 0.3);
+    box-shadow: 0 0 0 1px #e10600;
     border: none;
 }
 
@@ -35,6 +38,7 @@
     padding: 3px;
     border-radius: 50%;
     transition: background .3s linear;
+    cursor: pointer;
 }
 
 .active{

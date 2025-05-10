@@ -1,6 +1,6 @@
 import React from 'react'
 import './Menu.css';
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { useContext } from 'react';
 import { SeasonContext } from '../../context/SeasonContext';
 import FindYear from '../findYear/FindYear';
@@ -16,9 +16,9 @@ const Menu = () => {
             <p>{yearSeason}</p>
         </div>
         <div className='menuItens'>
-            <div className='menuLink'><Link to="/pilots">Pilotos</Link></div>
-            <div className='menuLink'><Link to="/teams">Equipes</Link></div>
-            <div className='menuLink'><Link to="/circuits">Circuitos</Link></div>
+            <div className='menuLink'><NavLink to="/pilots" className={({ isActive }) => isActive ? 'active' : ''}>Pilotos</NavLink></div>
+            <div className='menuLink'><NavLink to="/teams" className={({ isActive }) => isActive ? 'active' : ''}>Equipes</NavLink></div>
+            <div className='menuLink'><NavLink to="/races" className={({ isActive }) => isActive ? 'active' : ''}>Corridas</NavLink></div>
         </div>
         <FindYear></FindYear>
     </div>

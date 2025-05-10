@@ -41,7 +41,7 @@ const Driver = () =>{
                 </div>
                 <div className="infoDriver">
                     <p>{driverInfo.nationality}</p>
-                    <p>{driverInfo.dateOfBirth}</p>
+                    <p>{new Date(driverInfo.dateOfBirth).toLocaleDateString("pt-BR")}</p>
                     <p>{getAge()} anos</p>
                     <p>{driverData.wins} vitórias em {yearSeason}</p>
                     <p>{teamInfo.name}</p>

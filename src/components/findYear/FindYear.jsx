@@ -11,7 +11,7 @@ const FindYear = () => {
   const { setYearSeason } = useContext(SeasonContext);
 
   useEffect(()=>{
-    if(year.length === 4 && year>=1950) return setActive(true);
+    if(year.length === 4 && year>=1950 && year<=2025) return setActive(true);
     setActive(false);
   },[year])
 
@@ -21,7 +21,7 @@ const FindYear = () => {
   }
 
   const handleClick = ()=>{
-    if(year.length === 4 && year>=1950){
+    if(year.length === 4 && year>=1950 && year<=2025){
       setYearSeason(year);
       setYear(0);
     }
@@ -31,7 +31,7 @@ const FindYear = () => {
     <div className='findYearDiv'>
         <p>Procurar outro ano:</p>
         <div className="inputDiv">
-          <input type="text" value={year===0 ? '' : year} onChange={handleChange} inputMode="numeric" pattern="[0-9]*"/>
+          <input type="text" value={year===0 ? '' : year} onChange={handleChange} />
           <div className={`sendArrow ${active ? 'active' : ''}`} onClick={handleClick}>
             <FaArrowRight fill='white'></FaArrowRight>
           </div>
