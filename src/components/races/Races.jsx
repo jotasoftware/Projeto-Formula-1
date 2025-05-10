@@ -8,7 +8,7 @@ import Loading from '../loading/Loading'
 const Races = () => {
     const { racesData } = useContext(RaceContext);
     
-    if(!racesData) return <Loading />
+    if(!racesData) return <Loading />;
 
   return (
     <div className='racesDiv'>

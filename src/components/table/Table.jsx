@@ -18,7 +18,7 @@ const Table = ({type}) => {
     const setSelectDriver = type === "drivers" ? driversContext?.setSelectDriver : null;
     const teamsData = type === "teams" ? teamsContext?.teamsData : null;
 
-    if((type === "drivers" && !driversData)||(type === "teams" && !teamsData)) return <Loading />
+    if((type === "drivers" && !driversData)||(type === "teams" && !teamsData)) return <Loading />;
 
 
     
@@ -26,9 +26,9 @@ const Table = ({type}) => {
 
     const handleClick = (driver)=>{
         if(driver.Driver.familyName === 'Verstappen') {
-            return setSelectDriver(`${(driver.Driver.givenName).toLowerCase()}_${(driver.Driver.familyName).toLowerCase()}`)
+            return setSelectDriver(`${(driver.Driver.givenName).toLowerCase()}_${(driver.Driver.familyName).toLowerCase()}`);
         }
-        setSelectDriver((driver.Driver.familyName).toLowerCase())
+        setSelectDriver((driver.Driver.familyName).toLowerCase());
     }
 
     return (

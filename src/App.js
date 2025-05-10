@@ -43,11 +43,6 @@ function App() {
       </SeasonProvider>
     </div>
     </BrowserRouter>
-    //menu - corridas, Driveros, equipes
-    //criar component de tabela react-data-table-component ou meu proprio
-    //corridas 
-
-
   );
 }
 

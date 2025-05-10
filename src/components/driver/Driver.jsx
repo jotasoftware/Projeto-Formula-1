@@ -13,8 +13,8 @@ const Driver = () =>{
         return <Loading />
     }
 
-    const driverInfo = driverData.Driver
-    const teamInfo = driverData.Constructors[0]
+    const driverInfo = driverData.Driver;
+    const teamInfo = driverData.Constructors[0];
 
     const getAge = () => {
         const dateNow = new Date();
@@ -26,7 +26,7 @@ const Driver = () =>{
     }
 
     const handleClick = ()=>{
-        setSelectDriver("")
+        setSelectDriver("");
     }
 
     return (
