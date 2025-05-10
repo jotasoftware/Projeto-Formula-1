@@ -30,6 +30,7 @@
 - ✅ Exibição da classificação de equipes (construtores) por ano.
 - ✅ Visualização dos circuitos utilizados na temporada com detalhes de localização.
 - ✅ SPA completa utilizando React Router DOM.
+- ✅ Componente de carregamento (Loading) exibido enquanto os dados ainda estão sendo buscados.
 - ✅ Consumo da API com useReducer, facilitando o gerenciamento de múltiplos estados de carregamento e resposta de forma centralizada.
 
 ## 💡 Vantagens do useReducer
