@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Projeto-Formula-1/static/css/main.62912dca.css",
-    "main.js": "/Projeto-Formula-1/static/js/main.45da3379.js",
+    "main.js": "/Projeto-Formula-1/static/js/main.7822e7da.js",
     "static/js/453.aabb2cd1.chunk.js": "/Projeto-Formula-1/static/js/453.aabb2cd1.chunk.js",
     "index.html": "/Projeto-Formula-1/index.html",
     "main.62912dca.css.map": "/Projeto-Formula-1/static/css/main.62912dca.css.map",
-    "main.45da3379.js.map": "/Projeto-Formula-1/static/js/main.45da3379.js.map",
+    "main.7822e7da.js.map": "/Projeto-Formula-1/static/js/main.7822e7da.js.map",
     "453.aabb2cd1.chunk.js.map": "/Projeto-Formula-1/static/js/453.aabb2cd1.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.62912dca.css",
-    "static/js/main.45da3379.js"
+    "static/js/main.7822e7da.js"
   ]
 }
