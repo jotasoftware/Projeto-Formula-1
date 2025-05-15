@@ -1,6 +1,7 @@
 import { createContext, useEffect, useContext, useReducer } from "react";
 import React from "react";
 import { SeasonContext } from "./SeasonContext";
+import { toast } from "react-toastify";
 
 export const TeamContext = createContext();
 
@@ -27,16 +28,22 @@ const TeamProvider = ({children}) =>{
 
         const fetchAllTeams = async () => {
             try{
-                const response = await fetch(`https://api.jolpi.ca//ergast/f1/${yearSeason}/constructorstandings.json`);
-                const data = await response.json();
-                if (!response.ok) {
-                    throw new Error(`Erro API F1: ${response.status} ${response.statusText}`);
+                if(!yearSeason){
+                    toast.warn("Por favor, informe um ano.")
+                    throw new Error("Year not found");
+                } else{
+                    const response = await fetch(`https://api.jolpi.ca//ergast/f1/${yearSeason}/constructorstandings.json`);
+                    const data = await response.json();
+                    if (!response.ok) {
+                        throw new Error(`Erro API F1: ${response.status} ${response.statusText}`);
+                    }
+                    dispatch({
+                        type: 'set_teams_data',
+                        payload: data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings
+                    })
                 }
-                dispatch({
-                    type: 'set_teams_data',
-                    payload: data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings
-                })
             }catch (error){
+                toast.error("Error ao encontrar dados.")
                 console.error('Error to find data of all teams:', error);
             }
         };

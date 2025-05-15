@@ -1,5 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css';
+import { ToastContainer } from 'react-toastify';
+
 import DriverProvider from './context/DriverContext';
 import SeasonProvider from "./context/SeasonContext";
 import TeamProvider from "./context/TeamContext";
@@ -42,6 +44,7 @@ function App() {
         </main>
       </SeasonProvider>
     </div>
+    <ToastContainer />
     </BrowserRouter>
   );
 }

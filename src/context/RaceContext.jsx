@@ -1,6 +1,7 @@
 import { createContext, useEffect, useContext, useReducer } from "react";
 import React from "react";
 import { SeasonContext } from "./SeasonContext";
+import { toast } from "react-toastify";
 
 export const RaceContext = createContext();
 
@@ -27,17 +28,22 @@ const RaceProvider = ({children}) =>{
 
         const fetchAllRaces = async () => {
             try{
-                const response = await fetch(`https://api.jolpi.ca//ergast/f1/${yearSeason}/races.json`);
-                const data = await response.json();
-                if (!response.ok) {
-                    throw new Error(`Erro API F1: ${response.status} ${response.statusText}`);
+                if(!yearSeason){
+                    toast.warn("Por favor, informe um ano.")
+                    throw new Error("Year not found");
+                } else{
+                    const response = await fetch(`https://api.jolpi.ca//ergast/f1/${yearSeason}/races.json`);
+                    const data = await response.json();
+                    if (!response.ok) {
+                        throw new Error(`Erro API F1: ${response.status} ${response.statusText}`);
+                    }
+                    dispatch({
+                        type: 'set_races_data',
+                        payload: data.MRData.RaceTable.Races
+                    })
                 }
-                console.log(data.MRData.RaceTable.Races)
-                dispatch({
-                    type: 'set_races_data',
-                    payload: data.MRData.RaceTable.Races
-                })
             }catch (error){
+                toast.error("Error ao encontrar dados")
                 console.error('Error to find data of all races:', error);
             }
         };

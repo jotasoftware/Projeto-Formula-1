@@ -1,6 +1,7 @@
 import { createContext, useEffect, useContext, useReducer } from "react";
 import React from "react";
 import { SeasonContext } from "./SeasonContext";
+import { toast } from 'react-toastify'
 
 export const DriverContext = createContext();
 
@@ -34,24 +35,29 @@ const DriverProvider = ({children}) =>{
     useEffect(()=>{
         const fetchDriver = async () => {
             try{
-                if(!yearSeason) throw new Error(`Year not found`);
-                const response = await fetch(`https://api.jolpi.ca/ergast/f1/${yearSeason}/drivers/${selectDriver}/driverStandings.json`);
-                if (!response.ok) {
-                    throw new Error(`Erro API F1: ${response.status} ${response.statusText}`);
-                }
-                const data = await response.json();
-                if((data.MRData.StandingsTable.StandingsLists).length === 0){
-                    dispatch({
-                        type: 'set_driver_data',
-                        payload: ""
-                    })
+                if(!yearSeason){
+                    toast.warn("Por favor, informe um ano.")
+                    throw new Error("Year not found");
                 }else{
-                    dispatch({
-                        type: 'set_driver_data',
-                        payload: data.MRData.StandingsTable.StandingsLists[0].DriverStandings[0]
-                    })
+                    const response = await fetch(`https://api.jolpi.ca/ergast/f1/${yearSeason}/drivers/${selectDriver}/driverStandings.json`);
+                    if (!response.ok) {
+                        throw new Error(`Erro API F1: ${response.status} ${response.statusText}`);
+                    }
+                    const data = await response.json();
+                    if((data.MRData.StandingsTable.StandingsLists).length === 0){
+                        dispatch({
+                            type: 'set_driver_data',
+                            payload: ""
+                        })
+                    }else{
+                        dispatch({
+                            type: 'set_driver_data',
+                            payload: data.MRData.StandingsTable.StandingsLists[0].DriverStandings[0]
+                        })
+                    }
                 }
             }catch (error){
+                toast.error("Error ao procurar dados")
                 console.error('Error to find data of the driver', error);
             }
         };
@@ -62,16 +68,22 @@ const DriverProvider = ({children}) =>{
 
         const fetchAllDrivers = async () => {
             try{
-                const response = await fetch(`https://api.jolpi.ca/ergast/f1/${yearSeason}/driverStandings.json`);
-                const data = await response.json();
-                if (!response.ok) {
-                    throw new Error(`Erro API F1: ${response.status} ${response.statusText}`);
+                if(!yearSeason){
+                    toast.warn("Por favor, informe um ano.")
+                    throw new Error("Year not found");
+                } else{
+                    const response = await fetch(`https://api.jolpi.ca/ergast/f1/${yearSeason}/driverStandings.json`);
+                    const data = await response.json();
+                    if (!response.ok) {
+                        throw new Error(`Erro API F1: ${response.status} ${response.statusText}`);
+                    }
+                    dispatch({
+                        type: 'set_drivers_data',
+                        payload: data.MRData.StandingsTable.StandingsLists[0]
+                    })
                 }
-                dispatch({
-                    type: 'set_drivers_data',
-                    payload: data.MRData.StandingsTable.StandingsLists[0]
-                })
             }catch (error){
+                toast.error("Error ao procurar dados")
                 console.error('Error to find data of the drivers:', error);
             }
         };
